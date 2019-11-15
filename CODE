@@ -1,0 +1,41 @@
+class Suspect:
+    def __init__(self, pseudo, ADN):
+        self.pseudo = pseudo
+        self.ADN = ADN
+
+suspect1=Suspect("Colonel Moutarde","CCTGGAGGGTGGCCCCACCGGCCGAGACAGCGAGCATATGCAGGAAGCGGCAGGAATAAGGAAAAGCAGCADN")
+suspect2=Suspect("Mlle Rose","CTCCTGATGCTCCTCGCTTGGTGGTTTGAGTGGACCTCCCAGGCCAGTGCCGGGCCCCTCATAGGAGAGGADN")
+suspect3=Suspect("Mlle Pervenche","AAGCTCGGGAGGTGGCCAGGCGGCAGGAAGGCGCACCCCCCCAGTACTCCGCGCGCCGGGACAGAATGCCADN")
+suspect4=Suspect("Mr Leblanc","CTGCAGGAACTTCTTCTGGAAGTACTTCTCCTCCTGCAAATAAAACCTCACCCATGAATGCTCACGCAAG")
+
+#Valeur1=input("Saissisez le nom du suspect : ")
+#Valeur2=input("Saissisez la séquence d'ADN du suspect : ")
+#suspect5=Suspect(Valeur1,Valeur2.lower())
+
+def Analyse_ADN(suspect):
+    i = 0
+    a = 0
+    b = 4
+    compteur=0
+    Brin_1 = 'CATA'
+    Brin_2 = 'ATGC'
+    ADN = suspect.ADN
+    while i <= len(ADN):
+        if Brin_1 == ADN[a:b]:
+            ADN=ADN.replace(suspect.ADN[a:b],'x')
+            print("Nous retrouvons le brin 1 dans la séquence d'ADN de", suspect.pseudo)
+            compteur+=1
+        elif Brin_2 == ADN[a:b]:
+            ADN = ADN.replace(suspect.ADN[a:b], 'x')
+            print("Nous retrouvons le brin 2 dans la séquence d'ADN de",suspect.pseudo)
+            compteur+=1
+        a += 1
+        b += 1
+        i += 1
+    if compteur==2:
+        print(suspect.pseudo, 'est donc potentiellement coupable')
+    else:
+        print(suspect.pseudo, "est innocent étant donné que ne nous retrouvons pas les deux brins dans sa séquence d'ADN")
+
+
+Analyse_ADN(suspect2)
